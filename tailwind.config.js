@@ -16,6 +16,9 @@ module.exports = {
       'tertiary': '#f2f2f2',
       'dark': '#1a1a1a',
      }),
+     backgroundImage: theme => ({
+      'fade-primary-to-white': `linear-gradient(to bottom, ${theme('colors.primary')}, #ffffff)`,
+    }),
     extend: {},
   },
   plugins: [],

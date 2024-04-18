@@ -1,10 +1,11 @@
 import React from 'react'
 import AgentChatbox from "./AgentChatbox.tsx"
+import UserChatbox from "./UserChatbox.tsx"
 
 const Chat: React.FC = () => {
   return (
         
-        <div class='w-auto left-0 h-full p-6'>
+        <div class='w-auto left-0 h-full p-6' style={{ backgroundImage: 'linear-gradient(to bottom, #e9ece4, #ffffff)'}}>
           <div class='right-0 flex flex-col flex-auto flex-shrink-0 rounded-2xl bg-gray-100 h-full p-4'>
             <div class='flex flex-col h-full overflow-x-auto mb-4'>
               <div class='flex flex-col h-full'>
@@ -18,22 +19,13 @@ const Chat: React.FC = () => {
                       <div class='relative ml-3 text-sm bg-white py-2 px-4 shadow rounded-xl'>
                         <div>
                           Lorem ipsum dolor sit amet, consectetur adipisicing
-                          elit. Vel ipsa commodi illum saepe numquam maxime
+                        elit. Vel ipsa commodi illum saepe numquam maxime
                           asperiores voluptate sit, minima perspiciatis.
                         </div>
                       </div>
                     </div>
                   </div>
-                  <div class='col-start-6 col-end-13 p-3 rounded-lg'>
-                    <div class='flex items-center justify-start flex-row-reverse'>
-                      <div class='flex items-center justify-center h-10 w-10 rounded-full bg-indigo-500 flex-shrink-0'>
-                        A
-                      </div>
-                      <div class='relative mr-3 text-sm bg-indigo-100 py-2 px-4 shadow rounded-xl'>
-                        <div>Im ok what about you?</div>
-                      </div>
-                    </div>
-                  </div>
+                  <UserChatbox />
                   <div class='col-start-6 col-end-13 p-3 rounded-lg'>
                     <div class='flex items-center justify-start flex-row-reverse'>
                       <div class='flex items-center justify-center h-10 w-10 rounded-full bg-indigo-500 flex-shrink-0'>

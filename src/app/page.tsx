@@ -16,7 +16,7 @@
 import Image from "next/image";
 import Header from "../components/Header.tsx"
 import Menu from "../components/Menu.tsx"
-import Contacts from "../components/Contacts.tsx"
+import Contacts from "../components/Contacts"
 import Chat from "../components/Chat.tsx"
 
 export default function Home() {
