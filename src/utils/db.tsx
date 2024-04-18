@@ -17,7 +17,7 @@
 import {Pool} from 'pg';
 // Create a pool instance and pass in our config, which we set in our env vars
 
-let conn;
+let conn : any;
 
 if (!conn) {
   conn = new Pool({
@@ -28,7 +28,5 @@ if (!conn) {
     database: "livewell",
   });
 }
-
-console.log(conn)
 
 export { conn };
