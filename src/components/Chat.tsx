@@ -5,8 +5,6 @@ import {getChat} from '../helpers/get-chat.tsx'
 import MessageType from '../types/MessageType';
 
 const Chat: React.FC = async () => {
-
-  
   const messages : MessageType[]  = await getChat(1, 1);
 
   return (
@@ -72,7 +70,7 @@ const Chat: React.FC = async () => {
                 </div>
               </div>
               <div class='ml-4'>
-                <button class='flex items-center justify-center bg-indigo-500 hover:bg-indigo-600 rounded-xl text-white px-4 py-1 flex-shrink-0'>
+                <button class='flex items-center justify-center bg-gray-500 hover:bg-primary rounded-xl text-white px-4 py-1 flex-shrink-0'>
                   <span>Send</span>
                   <span class='ml-2'>
                     <svg

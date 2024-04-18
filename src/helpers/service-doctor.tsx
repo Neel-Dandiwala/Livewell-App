@@ -7,3 +7,10 @@ export const getDoctor = async (doctorId : number) => {
     const doctorRows = (await conn.query('SELECT * FROM doctors WHERE doctor_id = $1', [doctorId])).rows;
     return doctorRows;
 };
+
+export const getDoctors = async () => {
+    const doctorsRows = (await conn.query('SELECT * FROM doctors')).rows;
+    return doctorsRows;
+};
+
+
