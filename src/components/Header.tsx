@@ -5,7 +5,7 @@ interface HeaderProps {}
 
 const Header: React.FC<HeaderProps> = ({ }) => {
   return (
-    <header class="bg-white">
+    <header class="bg-white relative w-full">
       <discl 
         class="mx-auto flex max-w-8xl items-center justify-center p-3 lg:px-8 bg-primary"
       >
