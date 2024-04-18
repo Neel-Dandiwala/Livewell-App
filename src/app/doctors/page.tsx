@@ -5,7 +5,7 @@ import { Doctor } from '../../models/Doctor.tsx'
 
 export default async function Home () {
   const doctors: Doctor[] = await getDoctors()
-  console.log(doctors)
+//   console.log(doctors)
   return (
     <div style={{ display: 'flex', flexDirection: 'column', height: '100vh' }}>
       <Header />
