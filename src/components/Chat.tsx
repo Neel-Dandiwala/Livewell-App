@@ -9,6 +9,7 @@ import jwt from 'jsonwebtoken'
 import Cookies from 'js-cookie'
 import {useValidateToken} from '../lib/validation.tsx'
 import { useState, useEffect } from 'react';
+import Image from "next/image";
 
 interface Chatprops {
   doctorId: number
@@ -33,6 +34,7 @@ const Chat: React.FC<Chatprops> = ({ doctorId }) => {
     text: 'Can you help me?'
 }]);
   const [newMessage, setNewMessage] = useState('');
+  const [newUrl, setNewUrl] = useState('https://i.imgur.com/13thmg6.jpg');
 
   useEffect(() => {
     const fetchMessages = async () => {
@@ -48,20 +50,62 @@ const Chat: React.FC<Chatprops> = ({ doctorId }) => {
   }, [doctorId]);
 
   const handleSendMessage = () => {
-    const updatedMessages = [
-      ...messages,
-      {
-        id: messages.length + 1, 
-        text: newMessage,
-        sentbydoctor: false, 
-      },
-    ];
-
+    let updatedMessages = [...messages]; // Clone the current messages
+     // Otherwise, send the text message
+    updatedMessages.push({
+      id: messages.length + 1, 
+      type: 'text',
+      text: newMessage,
+      sentbydoctor: false, // This should be dynamically set based on the sender
+    });
+  
+ 
     setMessages(updatedMessages);
     setNewMessage(''); 
   };
 
- 
+  const handleImageMessage = () => {
+    let updatedMessages = [...messages];
+    updatedMessages.push({
+      id: messages.length + 1, 
+      type: 'image',
+      text: newUrl,
+      sentbydoctor: false, // This should be dynamically set based on the sender
+    });
+
+    setMessages(updatedMessages);
+    setNewUrl('https://i.imgur.com/13thmg6.jpg'); 
+  
+  }
+
+  const handleImageSelect = async (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      const formData = new FormData();
+      formData.append('image', file);
+  
+      try {
+        const response = await fetch('https://api.imgur.com/3/image', {
+          method: 'POST',
+          headers: {
+            Authorization: 'Client-ID 2eadeec4f0227cf',
+          },
+          body: formData,
+        });
+        const data = await response.json();
+        console.log(data)
+        if (data.success) {
+          console.log(data.data.link)
+          setNewUrl(data.data.link); 
+        } else {
+          throw new Error('Failed to upload image');
+        }
+      } catch (error) {
+        console.error('Error uploading image:', error);
+      }
+    }
+  };
+
   return (
         
         <div class='w-full left-0 h-full p-6' style={{ backgroundImage: 'linear-gradient(to bottom, #e9ece4, #ffffff)'}}>
@@ -71,10 +115,10 @@ const Chat: React.FC<Chatprops> = ({ doctorId }) => {
                 <div class='grid grid-cols-12 gap-y-2'>
                   {messages.map((message) => (
                     <React.Fragment class='w-full' key={message.id}>
-                    {message.sentbydoctor ? (
-                      <AgentChatbox name="Sarah" text={message.text} />
+                    { message.sentbydoctor ? (
+                      <AgentChatbox name="Doctor" type={message.type} text={message.text} />
                     ) : (
-                      <UserChatbox name="Husain" text={message.text}/>
+                      <UserChatbox name="Patient" type={message.type} text={message.text}/>
                     )}
                     </React.Fragment>
                   )) }
@@ -83,7 +127,8 @@ const Chat: React.FC<Chatprops> = ({ doctorId }) => {
             </div>
             <div class='flex flex-row items-center h-16 rounded-xl bg-white w-full px-4'>
               <div>
-                <button class='flex items-center justify-center text-gray-400 hover:text-gray-600'>
+                <button onClick={handleImageMessage} class='flex items-center justify-center text-gray-400 hover:text-gray-600'>
+                  <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" type="file" accept="image/*" onChange={handleImageSelect} />
                   <svg
                     class='w-5 h-5'
                     fill='none'

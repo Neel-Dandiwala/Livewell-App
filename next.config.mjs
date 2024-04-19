@@ -1,9 +1,10 @@
 /** @type {import('next').NextConfig} */
+
 const nextConfig = {
   images: {
-    domains: ['images.unsplash.com'],
+    domains: ['images.unsplash.com', 'i.imgur.com'],
   },
-    webpack: (config, { isServer }) => {
+    webpack: (config, { isServer, defaultLoaders, webpack }) => {
         if (!isServer) {
           config.resolve = {
             ...config.resolve,
