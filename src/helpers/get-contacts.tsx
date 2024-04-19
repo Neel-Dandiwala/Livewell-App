@@ -1,5 +1,5 @@
 import React from 'react';
-import {conn} from '../utils/db';
+import {conn} from '../lib/db';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import ContactType from '../types/ContactType';
 import Contacts from "../components/Contacts";

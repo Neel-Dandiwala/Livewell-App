@@ -1,5 +1,5 @@
 import React from 'react';
-import {conn} from '../utils/db';
+import {conn} from '../lib/db';
 
 const fs = require('fs')
 
