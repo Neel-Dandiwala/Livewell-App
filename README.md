@@ -3,7 +3,7 @@
 ## Project Overview
 This project presents an innovative and aesthetically pleasing patient and doctor experience, aligned with Livewell's theme. A standout feature of this solution is multimedia communication in the chats, elevating the user interaction to a more comprehensive level.
 
-![Login Page](/readme-1.png)
+![Login Page](/public/readme-1.png)
 
 ## Core Functionalities
 
@@ -13,7 +13,7 @@ We've developed a secure login mechanism that interacts with a robust PostgreSQL
 ### Messaging
 The chat feature is at the heart of real-time health service delivery, enabling seamless communication between doctors and patients. All messages are securely stored in the database for historical reference.
 
-![Chatbox](/readme-2.png)
+![Chatbox](/public/readme-2.png)
 
 ### Media Handling
 Users can upload images, including medical photos, directly into the chat. This enriches the conversation and aids in the diagnostic process.
@@ -21,7 +21,7 @@ Users can upload images, including medical photos, directly into the chat. This 
 ### Responsive UI/UX
 The front end has been crafted using React and Tailwind CSS, creating a responsive and smooth user experience across all devices and screen sizes.
 
-![Doctors Page](/readme-3.png)
+![Doctors Page](/public/readme-3.png)
 
 ### Data Validation and State Management
 Client-side data validation and state management ensure data integrity and a dynamic application state that responds intuitively to user interactions.
@@ -29,7 +29,7 @@ Client-side data validation and state management ensure data integrity and a dyn
 ### RESTful APIs Endpoints
 The backend logic, data retrieval, and manipulation are facilitated through RESTful API endpoints, ensuring a decoupled architecture and effortless scalability.
 
-![Patients Page](/readme-4.png)
+![Patients Page](/public/readme-4.png)
 
 ## Technologies Used
 
@@ -45,7 +45,7 @@ The backend logic, data retrieval, and manipulation are facilitated through REST
 
 The application storage is deployed on Vercel, showcasing its PostgreSQL integration and the ease of hosting Next.js applications on the platform.
 
-![Vercel PostgreSQL Snapshot](/readme-5.png)
+![Vercel PostgreSQL Snapshot](/public/readme-5.png)
 
 ## Running the Project
 
