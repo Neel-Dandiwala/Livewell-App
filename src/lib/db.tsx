@@ -1,32 +1,26 @@
-// // db.ts
-// import { Pool } from 'pg';
+// import {Pool} from 'pg';
 
-// const pool = new Pool({
-//   user: process.env.DB_USER,
-//   host: process.env.DB_HOST,
-//   database: process.env.DB_NAME,
-//   password: process.env.DB_PASSWORD,
-//   port: parseInt(process.env.DB_PORT || '5432', 10),
-//   ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : undefined,
-// });
+// let conn : any;
 
-// console.log(pool);
+// if (!conn) {
+//   conn = new Pool({
+//     user: "postgres",
+//     password: "postgres",
+//     host: "localhost",
+//     port: 5432,
+//     database: "livewell",
+//   });
+// }
 
-// export default pool;
+// export { conn };
 
-import {Pool} from 'pg';
-// Create a pool instance and pass in our config, which we set in our env vars
+import pg from 'pg';
 
-let conn : any;
+const { Pool } = pg;
 
-if (!conn) {
-  conn = new Pool({
-    user: "postgres",
-    password: "postgres",
-    host: "localhost",
-    port: 5432,
-    database: "livewell",
-  });
-}
+const conn = new Pool({
+  connectionString: process.env.POSTGRES_URL ,
+})
 
 export { conn };
+

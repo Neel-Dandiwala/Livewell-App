@@ -7,7 +7,6 @@ import { headers } from 'next/headers'
 export async function GET() {
     try {
       const headersInstance = headers()
-      console.log(authHeader)
       const authHeader = headersInstance.get('authorization')
       const token = authHeader.split(' ')[1]
       console.log(token)
