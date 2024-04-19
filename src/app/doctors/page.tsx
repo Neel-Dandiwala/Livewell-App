@@ -2,8 +2,10 @@ import Image from 'next/image'
 import Header from '../../components/Header.tsx'
 import { getDoctors } from '../../helpers/service-doctor.tsx'
 import { Doctor } from '../../models/Doctor.tsx'
+import { useRouter } from 'next/router';
 
 export default async function Home () {
+    
   const doctors: Doctor[] = await getDoctors()
 //   console.log(doctors)
   return (
@@ -45,7 +47,7 @@ export default async function Home () {
               <div class='-mt-px flex divide-x divide-gray-200'>
                 <div class='flex w-0 flex-1'>
                   <a
-                    href='#'
+                     href={`/chatbox/${doctor.id}`}
                     class='relative -mr-px inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-bl-lg border border-transparent py-4 text-sm font-semibold text-gray-900'
                   >
                     <svg

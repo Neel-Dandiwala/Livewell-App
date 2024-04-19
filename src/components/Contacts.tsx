@@ -14,6 +14,7 @@ const Contacts: React.FC = async ({ }) => {
           <ul role="list" className="divide-y divide-gray-100">
             {people.map((person) => (
               <li key={person.email} className="flex justify-between gap-x-6 py-5">
+                <a href={`/chatbox/${person.id}`}>
                 <div className="flex min-w-0 gap-x-4">
                   <Image className="h-12 w-12 flex-none rounded-full bg-gray-50" src={person.imageurl} alt=""  width={256}
               height={256}/>
@@ -36,7 +37,9 @@ const Contacts: React.FC = async ({ }) => {
                     </div>
                   )}
                 </div>
+                </a>
               </li>
+              
             ))}
           </ul>
           </div>

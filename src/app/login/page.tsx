@@ -2,8 +2,14 @@
 
 import Image from 'next/image'
 import './login.css';
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
+import EntityType from '../../types/EntityType';
+
+type ResponseData = {
+    token: string;
+    entity: EntityType; 
+  };
 
 export default function Home () {
     const [username, setUsername] = useState('')
@@ -25,9 +31,12 @@ export default function Home () {
           })
     
           if (!response.ok) throw new Error('Login failed')
-    
-          const { token } = await response.json()
+            // console.log(response)
+          const { token, entity } = await response.json() as ResponseData;
+          console.log(entity)
           document.cookie = `token=${token}; path=/`
+
+          document.cookie = `entity=${(entity.role[0] + entity.foreignid)}; path=/`
           router.push('/chatbox')
         } catch (error) {
           console.error(error)

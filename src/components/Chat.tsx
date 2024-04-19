@@ -1,12 +1,67 @@
+'use client';
+
 import React from 'react'
 import AgentChatbox from "./AgentChatbox.tsx"
 import UserChatbox from "./UserChatbox.tsx"
 import {getChat} from '../helpers/get-chat.tsx'
 import MessageType from '../types/MessageType';
+import jwt from 'jsonwebtoken'
+import Cookies from 'js-cookie'
+import {useValidateToken} from '../lib/validation.tsx'
+import { useState, useEffect } from 'react';
 
-const Chat: React.FC = async () => {
-  const messages : MessageType[]  = await getChat(1, 1);
+interface Chatprops {
+  doctorId: number
+}
 
+const Chat: React.FC<Chatprops> = ({ doctorId }) => {
+  console.log(doctorId);
+  // let messages : MessageType[] = await getChat(doctorId, 1);
+  const [messages, setMessages] = useState<MessageType[]>([{
+    id: 0,
+    sentbydoctor: true,
+    text: 'Hello, how can I help you today?'
+  },
+{
+    id: 1,
+    sentbydoctor: false,
+    text: 'Hi, I am feeling unwell'
+  },
+{
+    id: 2,
+    sentbydoctor: false,
+    text: 'Can you help me?'
+}]);
+  const [newMessage, setNewMessage] = useState('');
+
+  useEffect(() => {
+    const fetchMessages = async () => {
+      try {
+        const fetchedMessages = await getChat(doctorId, 1);
+        setMessages(fetchedMessages);
+      } catch (error) {
+        console.error('Failed to fetch messages:', error);
+      }
+    };
+
+    fetchMessages();
+  }, [doctorId]);
+
+  const handleSendMessage = () => {
+    const updatedMessages = [
+      ...messages,
+      {
+        id: messages.length + 1, 
+        text: newMessage,
+        sentbydoctor: false, 
+      },
+    ];
+
+    setMessages(updatedMessages);
+    setNewMessage(''); 
+  };
+
+ 
   return (
         
         <div class='w-full left-0 h-full p-6' style={{ backgroundImage: 'linear-gradient(to bottom, #e9ece4, #ffffff)'}}>
@@ -48,10 +103,12 @@ const Chat: React.FC = async () => {
               <div class='flex-grow ml-4'>
                 <div class='relative w-full'>
                   <input
+                    value={newMessage}
+                    onChange={(e) => setNewMessage(e.target.value)}
                     type='text'
                     class='flex w-full border rounded-xl focus:outline-none focus:border-indigo-300 pl-4 h-10'
                   />
-                  <button class='absolute flex items-center justify-center h-full w-12 right-0 top-0 text-gray-400 hover:text-gray-600'>
+                  <button onClick={handleSendMessage} class='absolute flex items-center justify-center h-full w-12 right-0 top-0 text-gray-400 hover:text-gray-600'>
                     <svg
                       class='w-6 h-6'
                       fill='none'
@@ -70,7 +127,7 @@ const Chat: React.FC = async () => {
                 </div>
               </div>
               <div class='ml-4'>
-                <button class='flex items-center justify-center bg-gray-500 hover:bg-primary rounded-xl text-white px-4 py-1 flex-shrink-0'>
+                <button onClick={handleSendMessage} class='flex items-center justify-center bg-gray-500 hover:bg-primary rounded-xl text-white px-4 py-1 flex-shrink-0'>
                   <span>Send</span>
                   <span class='ml-2'>
                     <svg
