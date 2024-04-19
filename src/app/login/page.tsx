@@ -29,7 +29,6 @@ export default function Home () {
               password,
             }),
           })
-    
           if (!response.ok) throw new Error('Login failed')
             // console.log(response)
           const { token, entity } = await response.json() as ResponseData;
