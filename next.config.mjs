@@ -24,6 +24,7 @@ const nextConfig = {
           };
         }
         config.module.exprContextCritical = false; 
+        config.plugins.push(new webpack.IgnorePlugin({ resourceRegExp: /^pg-native$/ }));
     
         return config;
     },
