@@ -1,5 +1,5 @@
 import {NextRequest, NextResponse} from "next/server";
-import EntityType from '../../types/EntityType';
+import EntityType from '../../../types/EntityType';
 import {authenticateEntity} from '../../../helpers/authenticate-entity';
 import jwt from 'jsonwebtoken'
 import { headers } from 'next/headers'
