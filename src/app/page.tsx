@@ -54,24 +54,24 @@ export default function Home () {
         error.preventDefault() 
     
         try {
-          const response = await fetch('/api/login', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-              username,
-              password,
-            }),
-          })
+          // const response = await fetch('/api/login', {
+          //   method: 'POST',
+          //   headers: {
+          //     'Content-Type': 'application/json',
+          //   },
+          //   body: JSON.stringify({
+          //     username,
+          //     password,
+          //   }),
+          // })
     
-          if (!response.ok) throw new Error('Login failed')
-            // console.log(response)
-          const { token, entity } = await response.json() as ResponseData;
-          console.log(entity)
-          document.cookie = `token=${token}; path=/`
+          // if (!response.ok) throw new Error('Login failed')
+          //   // console.log(response)
+          // const { token, entity } = await response.json() as ResponseData;
+          // console.log(entity)
+          // document.cookie = `token=${token}; path=/`
 
-          document.cookie = `entity=${(entity.role[0] + entity.foreignid)}; path=/`
+          // document.cookie = `entity=${(entity.role[0] + entity.foreignid)}; path=/`
           router.push('/chatbox/1')
         } catch (error) {
           console.error(error)

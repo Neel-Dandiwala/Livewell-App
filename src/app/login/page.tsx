@@ -36,7 +36,7 @@ export default function Home () {
           // document.cookie = `token=${token}; path=/`
 
           // document.cookie = `entity=${(entity.role[0] + entity.foreignid)}; path=/`
-          router.push('/chatbox')
+          await router.push('/chatbox/1')
         } catch (error) {
           console.error(error)
         }

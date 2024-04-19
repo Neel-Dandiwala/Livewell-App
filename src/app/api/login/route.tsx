@@ -47,18 +47,23 @@ export async function GET() {
   }
 
   
-// export async function POST(request: any) {
-    const body = await request.json()
-    const { username, password } = body
-    const entity = await authenticateEntity(username, password) as EntityType
-    // console.log(entity[0])
-    const token = jwt.sign({ userId: entity.foreignid }, process.env.JWT_SECRET, {
-      expiresIn: '5m',
-    })
+export async function POST(request: any) {
+    // const body = await request.json()
+    // const { username, password } = body
+    // const entity = await authenticateEntity(username, password) as EntityType
+    // // console.log(entity[0])
+    // const token = jwt.sign({ userId: entity.foreignid }, process.env.JWT_SECRET, {
+    //   expiresIn: '5m',
+    // })
     
-   
-    return await NextResponse.json({ 
-        token,
-        entity: entity[0]
-     })
-// }
+    return NextResponse.json(
+      { data: 'Protected data' },
+      {
+        status: 200,
+      },
+    )
+    // return await NextResponse.json({ 
+    //     token,
+    //     entity: entity[0]
+    //  })
+}
