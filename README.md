@@ -1,36 +1,68 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Livewell Interactive Patient-Doctor Chat Experience
 
-## Getting Started
+## Project Overview
+This project presents an innovative and aesthetically pleasing patient and doctor experience, aligned with Livewell's theme. A standout feature of this solution is multimedia communication in the chats, elevating the user interaction to a more comprehensive level.
 
-First, run the development server:
+![Login Page](/readme-1.png)
+
+## Core Functionalities
+
+### User Authentication
+We've developed a secure login mechanism that interacts with a robust PostgreSQL database, designed to manage user credentials, data, and chat histories. It supports complex queries and ensures data persistence and reliability.
+
+### Messaging
+The chat feature is at the heart of real-time health service delivery, enabling seamless communication between doctors and patients. All messages are securely stored in the database for historical reference.
+
+![Chatbox](/readme-2.png)
+
+### Media Handling
+Users can upload images, including medical photos, directly into the chat. This enriches the conversation and aids in the diagnostic process.
+
+### Responsive UI/UX
+The front end has been crafted using React and Tailwind CSS, creating a responsive and smooth user experience across all devices and screen sizes.
+
+![Doctors Page](/readme-3.png)
+
+### Data Validation and State Management
+Client-side data validation and state management ensure data integrity and a dynamic application state that responds intuitively to user interactions.
+
+### RESTful APIs Endpoints
+The backend logic, data retrieval, and manipulation are facilitated through RESTful API endpoints, ensuring a decoupled architecture and effortless scalability.
+
+![Patients Page](/readme-4.png)
+
+## Technologies Used
+
+- **Next.js**: Leveraging SSR and SSG features for enhanced performance.
+- **React**: Utilizing React's component-based architecture and hooks for state and side effect management.
+- **PostgreSQL**: Chosen for its robustness, both locally and on Vercel's PostgreSQL instance.
+- **Tailwind CSS**: Adopting a utility-first approach for a highly customizable and responsive design.
+- **Imgur API**: Integrated for image uploads and leveraging cloud-based storage solutions.
+- **TypeScript**: Employed for application logic, with static typing to reduce bugs and improve code quality.
+- **JWT and Cookies**: Used for secure token-based authentication and session state management.
+
+## Deployment
+
+The application storage is deployed on Vercel, showcasing its PostgreSQL integration and the ease of hosting Next.js applications on the platform.
+
+![Vercel PostgreSQL Snapshot](/readme-5.png)
+
+## Running the Project
+
+Instructions on how to clone, install dependencies, and run the project locally or in a production environment.
 
 ```bash
+# Clone the repository
+git clone https://your-repository-url
+
+# Install dependencies
+npm install
+
+# Run the application in development mode
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+# Build the application for production
+npm run build
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+# Start the production server
+npm start
