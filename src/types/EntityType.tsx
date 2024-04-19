@@ -1,4 +1,4 @@
-export default interface ContactType {
+export default interface EntityType {
     id: number;
     username: string;
     role: string;
